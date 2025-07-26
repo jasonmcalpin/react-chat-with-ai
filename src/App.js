@@ -6,7 +6,7 @@ import 'highlight.js/styles/github.css';
 import './App.css';
 
 const OLLAMA_API = 'http://localhost:11434';
-const STORAGE_KEY = 'ollama-multi-chat';
+const STORAGE_KEY = 'ollama-chat';
 
 export default function App() {
   const [models, setModels] = useState([]);
