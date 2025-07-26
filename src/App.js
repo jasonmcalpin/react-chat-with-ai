@@ -7,6 +7,7 @@ import './App.css';
 
 const OLLAMA_API = 'http://localhost:11434';
 const STORAGE_KEY = 'ollama-chat';
+const LEGACY_STORAGE_KEY = 'ollama-multi-chat';
 
 export default function App() {
   const [models, setModels] = useState([]);
@@ -17,14 +18,29 @@ export default function App() {
   const [showSystemPanel, setShowSystemPanel] = useState(false);
 
   const [sessions, setSessions] = useState(() => {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    return stored ? JSON.parse(stored) : {};
+    let stored = localStorage.getItem(STORAGE_KEY);
+    if (stored) return JSON.parse(stored);
+
+    // Try legacy key
+    const legacy = localStorage.getItem(LEGACY_STORAGE_KEY);
+    if (legacy) {
+      localStorage.setItem(STORAGE_KEY, legacy);
+      localStorage.removeItem(LEGACY_STORAGE_KEY);
+      return JSON.parse(legacy);
+    }
+    return {};
   });
 
   const [activeSessionId, setActiveSessionId] = useState(() => {
-    const stored = localStorage.getItem(STORAGE_KEY);
+    let stored = localStorage.getItem(STORAGE_KEY);
     if (stored) {
       const keys = Object.keys(JSON.parse(stored));
+      return keys[0] || null;
+    }
+    // Try legacy key
+    const legacy = localStorage.getItem(LEGACY_STORAGE_KEY);
+    if (legacy) {
+      const keys = Object.keys(JSON.parse(legacy));
       return keys[0] || null;
     }
     return null;
@@ -184,7 +200,6 @@ export default function App() {
 
   return (
     <div className="chat-container">
-      {/* Sidebar */}
       <div className="chat-sidebar">
         <button onClick={createSession}>➕ New</button>
         {Object.entries(sessions).map(([id, session]) => (
@@ -221,7 +236,6 @@ export default function App() {
         ))}
       </div>
 
-      {/* Main chat area */}
       <div className="chat-main">
         <div className="chat-header">
           <h1>Ollama Chat</h1>

@@ -218,3 +218,22 @@ body, html, #root {
   color: var(--text);
   resize: vertical;
 }
+
+.system-panel {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--assistant-bg);
+}
+
+.system-panel textarea {
+  width: 100%;
+  height: 80px;
+  font-family: monospace;
+  font-size: 0.9rem;
+  padding: 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--bg);
+  color: var(--text);
+  resize: vertical;
+}
