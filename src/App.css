@@ -1,0 +1,220 @@
+:root {
+  --bg: #ffffff;
+  --text: #111111;
+  --border: #ccc;
+  --assistant-bg: #f0f0f0;
+  --user-bg: #dff0ff;
+  --system-bg: #eeeeee;
+  --role-label: #666;
+}
+
+.dark {
+  --bg: #1e1e1e;
+  --text: #f1f1f1;
+  --border: #444;
+  --assistant-bg: #2e2e2e;
+  --user-bg: #004466;
+  --system-bg: #2c2c2c;
+  --role-label: #bbb;
+}
+
+/* Basic reset and layout */
+body, html, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: sans-serif;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* App layout */
+.chat-container {
+  display: flex;
+  height: 100vh;
+}
+
+/* Sidebar */
+.chat-sidebar {
+  width: 200px;
+  background: var(--bg);
+  border-right: 1px solid var(--border);
+  padding: 1rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.chat-sidebar button {
+  display: block;
+  width: 100%;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  padding: 0.5rem;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.chat-session {
+  padding: 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: transparent;
+  transition: background 0.2s ease;
+}
+
+.chat-session.active {
+  background: var(--assistant-bg);
+  font-weight: bold;
+}
+
+.chat-session button {
+  background: none;
+  border: none;
+  color: var(--role-label);
+  cursor: pointer;
+}
+
+.chat-session span {
+  flex: 1;
+  cursor: pointer;
+}
+
+/* Main area */
+.chat-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.chat-header {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--border);
+  padding: 0.25rem 0.75rem;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 1rem;
+  color: var(--text);
+}
+
+/* Chat history */
+.chat-history {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
+  background: var(--bg);
+}
+
+.message {
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  border-radius: 5px;
+  max-width: 90%;
+  white-space: pre-wrap;
+}
+
+.message-role {
+  font-size: 0.75rem;
+  color: var(--role-label);
+  margin-bottom: 0.25rem;
+  font-weight: bold;
+}
+
+.message.user {
+  background-color: var(--user-bg);
+  align-self: flex-end;
+}
+
+.message.assistant {
+  background-color: var(--assistant-bg);
+  align-self: flex-start;
+}
+
+.message.system {
+  background-color: var(--system-bg);
+  font-style: italic;
+  border-left: 3px solid var(--border);
+  align-self: center;
+}
+
+/* Input area */
+.chat-input {
+  display: flex;
+  border-top: 1px solid var(--border);
+  padding: 0.75rem;
+  background: var(--bg);
+}
+
+.chat-input textarea {
+  flex: 1;
+  resize: none;
+  padding: 0.5rem;
+  font-family: monospace;
+  font-size: 1rem;
+  height: 60px;
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+
+.chat-input button {
+  margin-left: 0.5rem;
+  padding: 0 1.25rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+  border-radius: 4px;
+}
+
+.session-edit {
+  flex: 1;
+  padding: 0.25rem;
+  font-size: 1rem;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  border-radius: 4px;
+  font-family: sans-serif;
+}
+
+.system-panel {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--assistant-bg);
+}
+
+.system-panel textarea {
+  width: 100%;
+  height: 80px;
+  font-family: monospace;
+  font-size: 0.9rem;
+  padding: 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--bg);
+  color: var(--text);
+  resize: vertical;
+}
