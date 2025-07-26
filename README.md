@@ -1,10 +1,36 @@
 # React Chat with AI
 
-This is a chat application built with React that interacts with Ollama running locally.
+This is a simple react act for talking to Ollama since I got tired of using the commandline.
 
-## Available Scripts
 
-In the project directory, you can run the following commands:
+## Installation
+install Node
+
+**Windows**
+download and install from node official website.
+[https://nodejs.org/en/download](https://nodejs.org/en/download)
+
+**OS X**
+If you have Homebrew installed:
+
+`brew install node`
+
+If not you can download it from the official website.
+
+[https://nodejs.org/en/download](https://nodejs.org/en/download)
+
+clone the repo
+`git clone https://github.com/jasonmcalpin/react-chat-with-ai.git`
+
+go into the folder and run 
+
+`npm install`
+
+You are now ready to run the app. 
+
+## Running the app
+
+The usual commands are available:
 
 ### `npm start`
 
