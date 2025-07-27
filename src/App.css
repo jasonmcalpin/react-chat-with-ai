@@ -18,7 +18,6 @@
   --role-label: #bbb;
 }
 
-/* Basic reset and layout */
 body, html, #root {
   margin: 0;
   padding: 0;
@@ -29,13 +28,11 @@ body, html, #root {
   transition: background 0.3s ease, color 0.3s ease;
 }
 
-/* App layout */
 .chat-container {
   display: flex;
   height: 100vh;
 }
 
-/* Sidebar */
 .chat-sidebar {
   width: 200px;
   background: var(--bg);
@@ -88,14 +85,12 @@ body, html, #root {
   cursor: pointer;
 }
 
-/* Main area */
 .chat-main {
   flex: 1;
   display: flex;
   flex-direction: column;
 }
 
-/* Header */
 .chat-header {
   padding: 1rem;
   border-bottom: 1px solid var(--border);
@@ -236,4 +231,11 @@ body, html, #root {
   background: var(--bg);
   color: var(--text);
   resize: vertical;
+}
+
+.dark select {
+      background-color: #1e1e1e;
+    color: #f0f0f0;
+    border: 1 solid #444;
+    padding: 0.5em;
 }
